@@ -1,0 +1,48 @@
+<mat-sidenav-container class="sidenav-container" >
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"
+      *ngIf="this.auth.isLoggedIn">
+    <mat-toolbar>Menu</mat-toolbar>
+
+    <mat-nav-list>
+        <a  mat-list-item [matMenuTriggerFor]="utilisateurs"> Action</a>
+        <mat-menu #utilisateurs="matMenu">
+          <a mat-menu-item *ngIf="this.auth.getOrganisme()=='Federation'" [matMenuTriggerFor]="Ajouter" >Ajouter</a>
+          <mat-menu #Ajouter="matMenu">
+            <a mat-menu-item [routerLink]="['/register']" *ngIf="this.auth.getRole()=='Admin'" >Ajouter Fédération</a>
+            <a mat-menu-item [routerLink]="['/register']" *ngIf="this.auth.getRole()=='Admin'||this.auth.getRole()=='Federation'" (click)="this.auth.addAssoc()" >Ajouter Association</a>
+            <a mat-menu-item [routerLink]="['/register']" *ngIf="this.auth.getRole()=='Association'" >Ajouter Utilisateur</a>
+
+
+
+          </mat-menu>
+          <!-- *ngIf="chienService.Authorized" -->
+          <a  mat-menu-item [routerLink]="['/listeadherents']">Adhérents</a>
+
+          <a  mat-menu-item [routerLink]="['/chien']">Chiens</a>
+          <a  mat-menu-item [routerLink]="['/arme']">Armes</a>
+          <a  mat-menu-item [routerLink]="['/permis']">Permis</a>
+
+          <a  color="primary" (click)="auth.logout()" mat-menu-item>Se déconnecter</a>
+
+        </mat-menu>
+      </mat-nav-list>
+      </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>FNC</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

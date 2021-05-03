@@ -1,0 +1,120 @@
+<div class="mat-elevation-z8">
+  <div>
+  <button mat-icon-button aria-label="add" style="margin-left:95%" [matMenuTriggerFor]="add">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #add="matMenu">
+    <a mat-menu-item [routerLink]="['/adherent']"  >Ajouter adhérent</a>
+</mat-menu>
+</div>
+  <table mat-table class="full-width-table" matSort aria-label="Elements" >
+    <!-- Id Column -->
+    <ng-container matColumnDef="adherentId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let element">{{element.adherentId}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nom_fr">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom (fr)</th>
+      <td mat-cell *matCellDef="let element">{{element.nom_fr}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nom_ar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nom (ar)</th>
+      <td mat-cell *matCellDef="let element">{{element.nom_ar}}</td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="prenom_fr">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Prenom (fr)</th>
+      <td mat-cell *matCellDef="let element">{{element.prenom_ar}}</td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="prenom_ar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Prenom (ar)</th>
+      <td mat-cell *matCellDef="let element">{{element.prenom_ar}}</td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="date_naiss">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date de naissance</th>
+      <td mat-cell *matCellDef="let element">{{element.date_naiss}}</td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="lieu_nais_ar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lieu naissance(ar)</th>
+      <td mat-cell *matCellDef="let element">{{element.lieu_nais_ar}}</td>
+    </ng-container>
+     <!-- Name Column -->
+
+
+     <!-- Name Column -->
+     <ng-container matColumnDef="lieu_nais_fr">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Lieu naissance (fr)</th>
+      <td mat-cell *matCellDef="let element">{{element.lieu_nais_fr}}</td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="nationalite">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nationalité</th>
+      <td mat-cell *matCellDef="let element">{{element.nationalite}}</td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="adresse_ar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Adresse (ar)</th>
+      <td mat-cell *matCellDef="let element">{{element.adresse_ar}}</td>
+    </ng-container>
+     <!-- Name Column -->
+     <ng-container matColumnDef="adresse_fr">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Adresse (fr)</th>
+      <td mat-cell *matCellDef="let element">{{element.adresse_fr}}</td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="ville_ar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Ville (ar)</th>
+      <td mat-cell *matCellDef="let element">{{element.ville_ar}}</td>
+    </ng-container>
+ <!-- Name Column -->
+ <ng-container matColumnDef="ville_fr">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>Ville (fr)</th>
+  <td mat-cell *matCellDef="let element">{{element.ville_fr}}</td>
+</ng-container>
+<!-- Name Column -->
+<ng-container matColumnDef="cp">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>CP</th>
+  <td mat-cell *matCellDef="let element">{{element.cp}}</td>
+</ng-container>
+
+<ng-container matColumnDef="actions">
+  <th mat-header-cell *matHeaderCellDef > Action </th>
+  <td  mat-cell *matCellDef="let row" >
+       <button mat-icon-button [matMenuTriggerFor]="ajouter" ><mat-icon>add_circle_outline</mat-icon></button>
+       <mat-menu #ajouter="matMenu">
+        <a mat-menu-item [routerLink]="['/permis']" (click)="getId(row.adherentId)" >Permis</a>
+        <a mat-menu-item [routerLink]="['/arme']" (click)="getId(row.adherentId)" >Arme</a>
+        <a mat-menu-item [routerLink]="['/chien']" (click)="getId(row.adherentId)" >Chien</a>
+ </mat-menu>
+  </td>
+</ng-container>
+<ng-container matColumnDef="add">
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>Add</th>
+  <tr></tr>
+
+</ng-container>
+
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+
+
+    </tr>
+
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data?.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>

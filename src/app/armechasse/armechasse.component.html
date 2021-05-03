@@ -1,0 +1,38 @@
+<mat-card class="container">
+  <mat-card-title>Ajouter une arme</mat-card-title>
+  <mat-card-content>Veuillez remplir le(s) champs suivant(s):</mat-card-content>
+  <form [formGroup]="armeForm" (ngSubmit)="onSubmit(armeForm)">
+
+    <mat-form-field hidden appearance="outline" class="full-width-input">
+      <mat-label>{{this.listeadh.adhId}}</mat-label>
+      <input matInput  formControlName="AdherentId" required disabled />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Catégorie</mat-label>
+      <input matInput type="text" formControlName="Categorie" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Type</mat-label>
+      <input matInput type="text" formControlName="Type" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Numéro de Série</mat-label>
+      <input matInput type="text" formControlName="Num_serie" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Calibre</mat-label>
+      <input matInput type="text" formControlName="Calibre" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width-input">
+      <mat-label>Nombre de coup</mat-label>
+      <input matInput type="text" formControlName="Nb_coup" required />
+    </mat-form-field>
+
+
+  <mat-card-actions align="end">
+    <button mat-raised-button [routerLink]="['/home']">Retour</button>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="" >Ajouter</button>
+  </mat-card-actions>
+  </form>
+</mat-card>
