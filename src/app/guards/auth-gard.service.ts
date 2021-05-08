@@ -9,11 +9,11 @@ export class AuthGuard implements CanActivate {
     private auth:AuthService) {
   }
   canActivate() {
-    // const token = localStorage.getItem("jwt");
-    // if (token && !this.jwtHelper.isTokenExpired(token)&&this.auth.isLoggedIn){
-    //   return true;
-    if (this.auth.isLoggedIn){
-      return true;
+
+    const token = localStorage.getItem("jwt");
+    if (token && !this.jwtHelper.isTokenExpired(token)&&this.auth.isLoggedIn){
+       return true;
+
 
     }
     this.router.navigate(["login"]);

@@ -1,0 +1,156 @@
+<!-- Ajouter Adherent -->
+<mat-card class="shipping-card">
+<div class="card-body">
+<mat-tab-group mat-align-tabs="center">
+
+  <mat-tab label="Adhérent">
+    <ng-template mat-tab-label>
+      <mat-icon class="example-tab-icon">perm_identity</mat-icon>
+      Adherent
+    </ng-template>
+    <mat-card >
+
+      <div class="card-body">
+      <form [formGroup]="modifAdherentForm" >
+        <!-- <mat-form-field appearance="outline" class="full-width" hidden>
+          <mat-label>{{ this.auth.getOrganisme() }} </mat-label>
+          <input disabled matInput type="text" formControlName="association" required
+            [placeholder]="this.auth.getOrganisme()" />
+        </mat-form-field> -->
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Nom  </mat-label>
+              <input  disabled matInput type="text" formControlName="nom_fr"   />
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Prénom </mat-label>
+              <input disabled matInput type="text" formControlName="prenom_fr" required />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label >Date de naissance</mat-label>
+              <input disabled matInput [matDatepicker]="debut" formControlName="date_nais" />
+              <mat-datepicker-toggle matSuffix [for]="debut"></mat-datepicker-toggle>
+              <mat-datepicker #debut startView="year" [startAt]="2021"></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label >Lieu de naissance </mat-label>
+              <input disabled matInput type="text" formControlName="lieu_nais_fr" required />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>N° CIN</mat-label>
+              <input disabled matInput type="text" formControlName="cin" required />
+            </mat-form-field>
+          </div>
+        </div>
+
+
+
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field  class="full-width">
+              <mat-label>Adresse</mat-label>
+              <textarea disabled matInput type="text" formControlName="adresse_fr" required></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Ville</mat-label>
+              <input disabled matInput type="text" formControlName="ville_fr" required />
+            </mat-form-field>
+          </div>
+          <!-- <div class="col">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Gouvernorat">
+                <mat-option *ngFor="let gouv of gouvs" [value]="gouv.value">
+                  {{ gouv.value }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div> -->
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Code postal</mat-label>
+              <input disabled matInput type="text" formControlName="cp" required />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Téléphone</mat-label>
+              <input disabled matInput type="text" formControlName="telephone" required />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Email</mat-label>
+              <input disabled matInput type="email" formControlName="email" required />
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <mat-form-field class="full-width">
+              <mat-label>Numéro d'adhésion</mat-label>
+              <input disabled matInput type="text" formControlName="num_adhesion" required />
+            </mat-form-field>
+
+          </div>
+        </div>
+
+
+
+        <mat-card-actions align="end">
+          <button mat-raised-button [routerLink]="['/listeadherents']">Retour</button>
+
+          <button mat-raised-button color="primary" type="submit" disabled>
+            Modifier
+          </button>
+        </mat-card-actions>
+      </form>
+      </div>
+    </mat-card>
+
+  </mat-tab>
+  <mat-tab label="Adhésion"><ng-template mat-tab-label>
+    <mat-icon class="example-tab-icon">how_to_reg</mat-icon>
+    Adhésion
+  </ng-template><app-adhesion></app-adhesion></mat-tab>
+  <mat-tab label="Arme de chasse"><ng-template mat-tab-label>
+    <mat-icon class="example-tab-icon">local_fire_department</mat-icon>
+    Arme
+  </ng-template><app-armechasse></app-armechasse></mat-tab>
+  <mat-tab label="Permis de chasse"><ng-template mat-tab-label>
+    <mat-icon class="example-tab-icon">assignment_turned_in</mat-icon>
+    Permis
+  </ng-template><app-permischasse></app-permischasse></mat-tab>
+  <mat-tab label="Chien de chasse"><ng-template mat-tab-label>
+    <mat-icon class="example-tab-icon">pets</mat-icon>
+    Chien
+  </ng-template><app-chienchasse></app-chienchasse></mat-tab>
+
+</mat-tab-group>
+</div>
+</mat-card>
+<!-- Adherent Table -->

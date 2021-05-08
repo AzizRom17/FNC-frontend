@@ -2,40 +2,58 @@
   <mat-card-title>Ajouter un permis</mat-card-title>
   <mat-card-content>Veuillez remplir le(s) champs suivant(s):</mat-card-content>
   <form [formGroup]="permisForm" (ngSubmit)="onSubmit(permisForm)">
-
-    <mat-form-field appearance="outline" class="full-width-input">
+    <div class="row">
+      <div class="col">
+    <mat-form-field  class="full-width">
       <mat-label>Numéro</mat-label>
       <input matInput type="text" formControlName="num_permis" required />
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Date d'obtention</mat-label>
+  </div>
+  </div>
+  <div class="row">
+    <div class="col">
+    <mat-form-field class="full-width">
+
+      <mat-label >Date d'obtention</mat-label>
       <input matInput [matDatepicker]="obt" formControlName="date_permis">
       <mat-datepicker-toggle matSuffix [for]="obt"></mat-datepicker-toggle>
       <mat-datepicker #obt startView="year" [startAt]="2021"></mat-datepicker>
     </mat-form-field>
-    <mat-form-field appearance="outline" class="full-width-input">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <mat-form-field  class="full-width">
       <mat-label>Lieu d'obtention</mat-label>
       <input matInput type="text" formControlName="lieu_obt" required />
     </mat-form-field>
-    <mat-form-field appearance="fill">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <mat-form-field  class="full-width">
       <mat-label>Date de début de validité</mat-label>
       <input matInput [matDatepicker]="debut" formControlName="date_debut_vali">
       <mat-datepicker-toggle matSuffix [for]="debut"></mat-datepicker-toggle>
       <mat-datepicker #debut startView="year" [startAt]="2021"></mat-datepicker>
     </mat-form-field>
-    <mat-form-field appearance="fill">
+  </div>
+  <div class="col">
+    <mat-form-field class="full-width">
       <mat-label>Date de fin de validité</mat-label>
       <input matInput [matDatepicker]="fin" formControlName="date_fin_vali">
       <mat-datepicker-toggle matSuffix [for]="fin"></mat-datepicker-toggle>
       <mat-datepicker #fin startView="year" [startAt]="2021"></mat-datepicker>
     </mat-form-field>
+  </div>
+  </div>
 
 
-    <p>Selected range: {{permisForm.value | json}}</p>
+
 
 
   <mat-card-actions align="end">
-    <button mat-raised-button [routerLink]="['/home']">Retour</button>
+
 
     <button mat-raised-button color="primary" type="submit" [disabled]="" >Ajouter</button>
   </mat-card-actions>

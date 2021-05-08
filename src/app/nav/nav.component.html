@@ -1,4 +1,108 @@
-<mat-sidenav-container class="sidenav-container" >
+<div class="wrapper"  >
+  <div class="sidebar" data-color="purple" data-background-color="white" data-image="..//..//assets/img/sidebar-1.jpg" *ngIf="this.auth.isLoggedIn">
+    <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+      Tip 2: you can also add an image using data-image tag
+  -->
+    <div class="logo"><a routerLink="home" class="simple-text logo-normal">
+      <img class="image" src="..//..//assets/img/logo.svg" alt="">     </a></div>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li class="nav-item" [routerLinkActive]="['active']" *ngIf="this.auth.getRole()=='Admin'||this.auth.getRole()=='Federation'">
+          <a class="nav-link" routerLink="listeassociationreg"  >
+            <i class="material-icons">holiday_village</i>
+            <p>Associations</p>
+          </a>
+        </li>
+        <li class="nav-item  " [routerLinkActive]="['active']">
+          <a class="nav-link" routerLink="listeadherents">
+            <i class="material-icons">person</i>
+            <p>Adhérents</p>
+          </a>
+        </li>
+        <li class="nav-item  " [routerLinkActive]="['active']">
+          <a class="nav-link" routerLink="cotisation">
+            <i class="material-icons">payment</i>
+            <p>Cotisations</p>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " *ngIf="this.auth.isLoggedIn">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <a class="navbar-brand" href="javascript:;">Dashboard</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+          <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end">
+          <form class="navbar-form">
+            <div class="input-group no-border">
+              <input type="text" value="" class="form-control" placeholder="Search...">
+              <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                <i class="material-icons">search</i>
+                <div class="ripple-container"></div>
+              </button>
+            </div>
+          </form>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:;">
+                <i class="material-icons">dashboard</i>
+                <p class="d-lg-none d-md-block">
+                  Stats
+                </p>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">notifications</i>
+                <span class="notification">5</span>
+                <p class="d-lg-none d-md-block">
+                  Some Actions
+                </p>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Mike John responded to your email</a>
+                <a class="dropdown-item" href="#">You have 5 new tasks</a>
+                <a class="dropdown-item" href="#">You're now friend with Andrew</a>
+                <a class="dropdown-item" href="#">Another Notification</a>
+                <a class="dropdown-item" href="#">Another One</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="javascript:;" id="navbarDropdownProfile" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="material-icons">person</i>
+                <p class="d-lg-none d-md-block">
+                  Account
+                </p>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">Settings</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" (click)="this.auth.logout()">Log out</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="content">
+      <div class="container-fluid">
+    <router-outlet></router-outlet></div></div>
+
+
+<!-- <mat-sidenav-container class="sidenav-container" >
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -7,10 +111,9 @@
     <mat-toolbar>Menu</mat-toolbar>
 
     <mat-nav-list>
-        <a  mat-list-item [matMenuTriggerFor]="utilisateurs"> Action</a>
-        <mat-menu #utilisateurs="matMenu">
-          <a mat-menu-item *ngIf="this.auth.getOrganisme()=='Federation'" [matMenuTriggerFor]="Ajouter" >Ajouter</a>
-          <mat-menu #Ajouter="matMenu">
+
+          <a mat-menu-item *ngIf="this.auth.getOrganisme()=='Federation'"  [routerLink]="['/listeassociationreg']" >Associations</a>
+          <mat-menu #Associations="matMenu">
             <a mat-menu-item [routerLink]="['/register']" *ngIf="this.auth.getRole()=='Admin'" >Ajouter Fédération</a>
             <a mat-menu-item [routerLink]="['/register']" *ngIf="this.auth.getRole()=='Admin'||this.auth.getRole()=='Federation'" (click)="this.auth.addAssoc()" >Ajouter Association</a>
             <a mat-menu-item [routerLink]="['/register']" *ngIf="this.auth.getRole()=='Association'" >Ajouter Utilisateur</a>
@@ -18,16 +121,14 @@
 
 
           </mat-menu>
-          <!-- *ngIf="chienService.Authorized" -->
+
           <a  mat-menu-item [routerLink]="['/listeadherents']">Adhérents</a>
 
-          <a  mat-menu-item [routerLink]="['/chien']">Chiens</a>
-          <a  mat-menu-item [routerLink]="['/arme']">Armes</a>
-          <a  mat-menu-item [routerLink]="['/permis']">Permis</a>
+
 
           <a  color="primary" (click)="auth.logout()" mat-menu-item>Se déconnecter</a>
 
-        </mat-menu>
+
       </mat-nav-list>
       </mat-sidenav>
   <mat-sidenav-content>
@@ -43,6 +144,8 @@
       <span>FNC</span>
     </mat-toolbar>
     <!-- Add Content Here -->
+    <!-- <div class="container-fluid">
     <router-outlet></router-outlet>
+  </div>
   </mat-sidenav-content>
-</mat-sidenav-container>
+</mat-sidenav-container> -->

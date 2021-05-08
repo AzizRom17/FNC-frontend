@@ -17,12 +17,12 @@ export class PermischasseService {
       this.http.post(environment.APIUri+'/permis_chasse', form).subscribe(
         (response) => {
 
-          console.log("saha!");
+          this.toastr.success("Le permis de chasse a été ajouté avec succéss!");
            },
         (err) => {
           console.log(err)
 
-          this.toastr.error("Connexion échoucée, veuillez vérifier vos identifiants")
+          this.toastr.error("Erreur lors de l'ajout du permis!")
         }
       );
   }

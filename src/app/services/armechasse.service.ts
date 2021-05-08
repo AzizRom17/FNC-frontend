@@ -26,12 +26,12 @@ export class ArmechasseService {
     this.http.post(environment.APIUri+'/arme_chasse', form).subscribe(
       (response) => {
 
-        console.log("saha!");
+        this.toastr.success("L'arme a été ajoutée avec succéss!");
          },
       (err) => {
         console.log(err)
 
-        this.toastr.error("Connexion échoucée, veuillez vérifier vos identifiants")
+        this.toastr.error("Erreur lors de l'ajout de l'arme!")
       }
     );
 }

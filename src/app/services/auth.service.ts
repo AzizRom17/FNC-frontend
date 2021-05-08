@@ -14,7 +14,7 @@ export class AuthService {
   public isLoggedIn :boolean=false;
   //public loggedUser: string;
   public Authorized :boolean=false;
-
+public  role: string=this.getRole();
   public userRole = localStorage.getItem('loggedUser');
   constructor(
     private http:HttpClient,
@@ -44,7 +44,7 @@ export class AuthService {
       (err) => {
         console.log(err)
         this.isLoggedIn = false;
-        this.toastr.error("Connexion échoucée, veuillez vérifier vos identifiants")
+        this.toastr.error("Connexion échouée, veuillez vérifier vos identifiants")
       }
     );
 }
@@ -52,7 +52,7 @@ export class AuthService {
     let role = localStorage.getItem('role');
     switch (role){
     case 'Admin':
-      this.URL="register-federation";
+      this.URL="register-association";
       break;
       case 'Federation':
         this.URL="register-association";
@@ -74,7 +74,8 @@ getOrganisme(){
 
 
   register(form){
-    return this.http.post(environment.APIUri+'/Authenticate/'+this.URL,form);
+    //this.getUrl();
+    return this.http.post(environment.APIUri+'/Authenticate/register-association',form);
   }
 
 
@@ -86,6 +87,7 @@ getOrganisme(){
     localStorage.removeItem('jwt');
     localStorage.removeItem('role');
     localStorage.removeItem('organisme');
+    localStorage.removeItem('adhId');
     this.router.navigateByUrl('/login');
     this.isLoggedIn=false;
 

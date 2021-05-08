@@ -1,18 +1,22 @@
-<mat-card class="container">
-  <mat-card-title>Login</mat-card-title>
-  <mat-card-content>Veuillez entrer vos identifiants</mat-card-content>
+
+<mat-card class="container" style="margin-left: 15%; ">
+  <div class="logo logo1"><a href="" class="simple-text logo-normal" >
+    <img class="image" src="..//..//assets/img/logo.svg" alt="">
+    </a></div>
+  <!-- <mat-card-title>Login</mat-card-title>
+  <mat-card-content>Veuillez entrer vos identifiants</mat-card-content> -->
   <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
-    <mat-form-field appearance="outline" class="full-width-input">
+    <mat-form-field  class="full-width-input">
       <mat-label>Login</mat-label>
       <input matInput formControlName="Username" required />
     </mat-form-field>
-    <mat-form-field appearance="outline" class="full-width-input">
+    <mat-form-field  class="full-width-input">
       <mat-label>Mot de passe</mat-label>
       <input matInput type="password" formControlName="Password" required />
     </mat-form-field>
 
-  <mat-card-actions align="end">
-    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid" >Se connecter</button>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" class="full-width-input" type="submit" [disabled]="!loginForm.valid" >Se connecter</button>
   </mat-card-actions>
   </form>
 </mat-card>

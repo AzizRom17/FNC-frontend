@@ -9,6 +9,7 @@ import { AuthService } from '../services/auth.service';
 import { Adherent } from './adherent-datasource';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AdherentComponent } from '../adherent/adherent.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -29,19 +30,18 @@ export class ListeadherentsComponent implements AfterViewInit {
   public adherent:any;
   public adhId:number;
   isAllowed:boolean=false;
+  public date:any;
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns : string[] = ['adherentId','nom_ar','nom_fr','prenom_ar','prenom_fr','date_naiss',
-  'lieu_nais_ar','lieu_nais_fr','nationalite',
-  'adresse_ar','adresse_fr','ville_ar','ville_fr','cp','actions'];
+  displayedColumns : string[] = ['nom_fr','prenom_fr','date_naiss','email','num_adhesion'
+ ,'actions'];
 
   constructor(private adhservice:AdherentService,
-    private auth:AuthService,
+    public auth:AuthService,private datePipe: DatePipe
    ) {
   }
 
 
   ngAfterViewInit() {
-
     // this.adhservice.getAdherent().subscribe((res) => {
     //   console.log(res);
     //   this.dataSource = new MatTableDataSource(res);
@@ -49,8 +49,10 @@ export class ListeadherentsComponent implements AfterViewInit {
 
     let resp=this.adhservice.getAdherent();
 
+
     resp.subscribe(report=>this.dataSource.data=report as Adherent[]);
      resp.subscribe(req => console.log(req));
+     this.date = this.datePipe.transform(new Date(), 'dd-MM-yy');
 
   //   resp.subscribe(req => {
   //     this.adherent= req;
@@ -66,9 +68,9 @@ export class ListeadherentsComponent implements AfterViewInit {
   }
   getId(x)
 
-  {      localStorage.setItem("adhId",x)
-  }
+  {      localStorage.setItem("adhId",x);
+        this.adhservice.consultAdh=true;
+        this.adhservice.getAdherentById().subscribe(req => console.log(req))
+      }
 
 }
-
-

@@ -13,7 +13,7 @@ import { MaterialModule } from './material/material.module';
 import {  ReactiveFormsModule } from '@angular/forms';
 import {  HttpClientModule } from '@angular/common/http';
 import jwtDecode from 'jwt-decode';
-import { NavbarComponent } from './navbar/navbar.component';
+
 import { RegisterComponent } from './register/register.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthGuard } from './guards/auth-gard.service';
@@ -38,6 +38,19 @@ import { MatTableModule,MatTableDataSource} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ListeadherentsComponent } from './listeadherents/listeadherents.component';
+import { DatePipe } from '@angular/common';
+import { AssociationComponent } from './association/association.component';
+import { ListeassociationregComponent } from './association/listeassociationreg/listeassociationreg.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { ModifieradherentComponent } from './adherent/modifieradherent/modifieradherent.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AdhesionComponent } from './adhesion/adhesion.component';
+import { CotisationComponent } from './cotisation/cotisation.component';
+import { ListeexerciceComponent } from './cotisation/listeexercice/listeexercice.component';
+import { ListecotisationComponent } from './cotisation/listecotisation/listecotisation.component';
+
 
 
 
@@ -50,15 +63,24 @@ export function tokenGetter() {
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NavbarComponent,
+
     RegisterComponent,
     ChienchasseComponent,
     NavComponent,
     PermischasseComponent,
     ArmechasseComponent,
     AdherentComponent,
+    ListeadherentsComponent,
+     AssociationComponent,
+     ListeassociationregComponent,
 
-    ListeadherentsComponent
+     ModifieradherentComponent,
+     PagenotfoundComponent,
+     AdhesionComponent,
+     CotisationComponent,
+     ListeexerciceComponent,
+     ListecotisationComponent
+
 
 
   ],
@@ -83,12 +105,15 @@ export function tokenGetter() {
     MatMenuModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule
 
   ],
   providers: [AuthGuard,
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
-  ListeadherentsComponent],
+  ListeadherentsComponent,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

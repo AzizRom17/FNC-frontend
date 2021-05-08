@@ -1,5 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -12,9 +14,13 @@ import { AuthService } from './auth.service';
 export class AdherentService {
   private nomAss = this.auth.getOrganisme();
   public adherent:any;
+  public consultAdh:boolean=false;
+  public adhId=localStorage.getItem('adhId');
+  public URL:string;
   constructor(private auth:AuthService,
     private http:HttpClient,
-    private toastr:ToastrService) { }
+    private toastr:ToastrService,
+    private router:Router) { }
 
       //`${config.apiUrl}/users`
       //organisme : any = {"nom":this.auth.getOrganisme()};
@@ -24,7 +30,8 @@ export class AdherentService {
         (response) => {
 
           console.log(response);
-
+          this.toastr.success("L'adhérent a été ajouté avec succéss!");
+          this.router.navigateByUrl('/listeadherents');
            },
         (err) => {
           console.log(err)
@@ -51,8 +58,37 @@ export class AdherentService {
 
     getAdherent(){
 
+      let role = localStorage.getItem('role');
+      switch (role){
+        case 'Admin':
+          this.URL='/adherents';
+          break;
+          case 'Federation':
+            this.URL='/adherents';
+            break;
+            case 'Association':
 
-      return  this.http.get(environment.APIUri+'/adherents/getAdherentByAss/'+this.nomAss );
+             this.URL='/adherents/getAdherentByAss/'+this.nomAss;
+             case 'User':
+
+              this.URL='/adherents/getAdherentByAss/'+this.nomAss;
+
+              break;}
+             // resp=this.http.get(environment.APIUri+'/adherents/getAdherentByAss/'+this.nomAss );
+
+     return this.http.get(environment.APIUri+this.URL);
     }
+
+    getAdherentById(){
+
+
+      return  this.http.get(environment.APIUri+'/adherents/getAdherentById/'+this.adhId );
+    }
+    getAdherentById1(x):Observable<any>{
+
+
+      return  this.http.get<any>(environment.APIUri+'/adherents/getAdherentById/'+x );
+    }
+
 
 }

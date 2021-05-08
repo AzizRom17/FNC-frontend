@@ -13,7 +13,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatTableDataSource } from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -24,7 +24,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 const MaterialComponents = [MatButtonModule,MatCardModule,
 MatInputModule,MatFormFieldModule,MatToolbarModule,
 MatSidenavModule,MatIconModule,MatMenuModule,MatSelectModule,
-MatDatepickerModule, MatNativeDateModule,MatDialogModule];
+MatDatepickerModule, MatNativeDateModule,MatDialogModule,MatTabsModule];
 
 @NgModule({
 

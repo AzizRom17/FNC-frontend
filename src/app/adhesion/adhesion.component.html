@@ -1,0 +1,28 @@
+<mat-card class="container">
+  <mat-card-title>Adhésion</mat-card-title>
+
+
+  <div class="row">
+    <div class="col">
+
+      <h4 class="full-width">N° d'adhésion: {{num_adhesion}}</h4>
+
+
+    </div>
+  </div>
+    <div class="row">
+    <div class="col">
+      <mat-label class="full-width">Date d'adhésion: {{date_adhesion| date:'dd-MM-yy'}}</mat-label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-card-actions align="end">
+      <br>
+<button mat-raised-button color="primary" (click)="cotClick()">Afficher Cottisation</button>
+</mat-card-actions>
+</div>
+</div>
+<app-cotisation></app-cotisation>
+
+</mat-card>

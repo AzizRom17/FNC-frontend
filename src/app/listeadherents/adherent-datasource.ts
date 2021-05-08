@@ -7,20 +7,13 @@ import { AdherentService } from '../services/adherent.service';
 
 // TODO: Replace this with your own data model type
 export interface Adherent {
-  adherentId :number;
-  nom_ar:string;
+
   nom_fr:string;
-  prenom_ar:string;
+
   prenom_fr:string;
   date_nais:string;
-  lieu_nais_ar:string;
-  lieu_nais_fr:string;
-  nationalite:string;
-  adresse_ar:string;
-  adresse_fr:string;
-  ville_ar:string;
-  ville_fr:string;
-  cp:string;
+  email:string;
+  num_adhesion:number;
 
 
 }
@@ -99,8 +92,8 @@ export class TableDataSource extends DataSource<Adherent> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'Nom_fr': return compare(a.nom_fr, b.nom_fr, isAsc);
-        case 'id': return compare(+a.adherentId, +b.adherentId, isAsc);
+        case 'nom_fr': return compare(a.nom_fr, b.nom_fr, isAsc);
+        case 'prenom_fr': return compare(+a.prenom_fr, +b.prenom_fr, isAsc);
         default: return 0;
       }
     });
