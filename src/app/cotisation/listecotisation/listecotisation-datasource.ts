@@ -4,10 +4,25 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 
-import { Cotisation } from '../cotisation-datasource';
+import {  } from '../cotisation-datasource';
 import { CotisationService } from 'src/app/services/cotisation.service';
-export class TableDataSource extends DataSource<Cotisation> {
-  data: Cotisation[] ;
+
+
+
+export interface Cotisation1 {
+
+  exerciceLib:string;
+  num_adhesion:number;
+  montant:number;
+  nom_fr:string;
+  prenom_fr:string;
+  etat_cotisationLib:string;
+  adherentId:number;
+  etat_cotisationId:number;
+  cotisationId:number;
+}
+export class TableDataSource extends DataSource<Cotisation1> {
+  data: Cotisation1[] ;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
@@ -21,7 +36,7 @@ export class TableDataSource extends DataSource<Cotisation> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Cotisation[]> {
+  connect(): Observable<Cotisation1[]> {
 
 
     if (this.paginator && this.sort) {
@@ -46,7 +61,7 @@ export class TableDataSource extends DataSource<Cotisation> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Cotisation[]): Cotisation[] {
+  private getPagedData(data: Cotisation1[]): Cotisation1[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -59,7 +74,7 @@ export class TableDataSource extends DataSource<Cotisation> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Cotisation[]): Cotisation[] {
+  private getSortedData(data: Cotisation1[]): Cotisation1[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }

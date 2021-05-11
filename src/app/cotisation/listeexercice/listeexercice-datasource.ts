@@ -10,6 +10,7 @@ export interface Exercice {
   exerciceLib: string;
   montant: number;
   exerciceId: number;
+  viewValue:string;
 }
 export class ExerciceTableDataSource extends DataSource<Exercice> {
   data: Exercice[];

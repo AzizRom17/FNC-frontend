@@ -1,4 +1,4 @@
-import {  NgModule } from '@angular/core';
+import {  Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdherentComponent } from './adherent/adherent.component';
 import { ModifieradherentComponent } from './adherent/modifieradherent/modifieradherent.component';
@@ -6,6 +6,8 @@ import { ModifieradherentComponent } from './adherent/modifieradherent/modifiera
 import { ArmechasseComponent } from './armechasse/armechasse.component';
 import { ListeassociationregComponent } from './association/listeassociationreg/listeassociationreg.component';
 import { ChienchasseComponent } from './chienchasse/chienchasse.component';
+import { AjouterexerciceComponent } from './cotisation/ajouterexercice/ajouterexercice.component';
+import { CotisationComponent } from './cotisation/cotisation.component';
 import { ListecotisationComponent } from './cotisation/listecotisation/listecotisation.component';
 import { ListeexerciceComponent } from './cotisation/listeexercice/listeexercice.component';
 import { AuthGuard } from './guards/auth-gard.service';
@@ -31,6 +33,8 @@ const routes: Routes = [
   {path:'adherent/:id',component:ModifieradherentComponent,canActivate:[AuthGuard]},
   {path:'cotisation',component:ListeexerciceComponent,canActivate:[AuthGuard]},
   {path:'listecotisation',component:ListecotisationComponent,canActivate:[AuthGuard]},
+  {path:'cotisationadherent/:id',component:CotisationComponent,canActivate:[AuthGuard]},
+  {path:'ajouterexercice',component:AjouterexerciceComponent,canActivate:[AuthGuard]},
   {path:"**",component:PagenotfoundComponent}
 ];
 

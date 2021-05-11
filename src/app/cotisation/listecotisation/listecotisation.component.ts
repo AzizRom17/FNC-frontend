@@ -8,8 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CotisationService } from 'src/app/services/cotisation.service';
 import { EtatcotisationService } from 'src/app/services/etatcotisation.service';
 import { ExerciceService } from 'src/app/services/exercice.service';
-import { Cotisation } from '../cotisation-datasource';
 import { Exercice } from '../listeexercice/listeexercice-datasource';
+import { Cotisation1 } from './listecotisation-datasource';
 
 @Component({
   selector: 'app-listecotisation',
@@ -20,8 +20,8 @@ export class ListecotisationComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<Exercice>;
-  ELEMENT_DATA:any=["test"];dataSource = new MatTableDataSource<Exercice>();
+  @ViewChild(MatTable) table!: MatTable<Cotisation1>;
+  ELEMENT_DATA:any=["test"];dataSource = new MatTableDataSource<Cotisation1>();
   public adherent:any;
   public adhId:number;
   isAllowed:boolean=false;
@@ -32,10 +32,11 @@ export class ListecotisationComponent implements AfterViewInit {
 
   constructor(public cotservice:CotisationService,
     public auth:AuthService,
-    private adhservice:AdherentService,
+    public adhservice:AdherentService,
     private exservice:ExerciceService,
     private etatcotservice:EtatcotisationService,
-    private routeur:Router
+    private routeur:Router,
+
    ) {
   }
 
@@ -46,10 +47,10 @@ export class ListecotisationComponent implements AfterViewInit {
     //   this.dataSource = new MatTableDataSource(res);
     //   this.dataSource.data=res as TableItem[]
 
-    let resp=this.etatcotservice.getEtatCotisation();
+    let resp=this.cotservice.getCotisation();
 
 
-    resp.subscribe(report=>this.dataSource.data=report as Exercice[]);
+    resp.subscribe(report=>this.dataSource.data=report as Cotisation1[]);
      resp.subscribe(req => console.log(req));
 
 

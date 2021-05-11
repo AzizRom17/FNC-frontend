@@ -50,6 +50,7 @@ import { AdhesionComponent } from './adhesion/adhesion.component';
 import { CotisationComponent } from './cotisation/cotisation.component';
 import { ListeexerciceComponent } from './cotisation/listeexercice/listeexercice.component';
 import { ListecotisationComponent } from './cotisation/listecotisation/listecotisation.component';
+import { AjouterexerciceComponent } from './cotisation/ajouterexercice/ajouterexercice.component';
 
 
 
@@ -79,7 +80,8 @@ export function tokenGetter() {
      AdhesionComponent,
      CotisationComponent,
      ListeexerciceComponent,
-     ListecotisationComponent
+     ListecotisationComponent,
+     AjouterexerciceComponent
 
 
 
@@ -113,7 +115,7 @@ export function tokenGetter() {
   ],
   providers: [AuthGuard,
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
-  ListeadherentsComponent,DatePipe],
+  ListeadherentsComponent,DatePipe,AdherentComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -14,11 +14,11 @@ export class AdhesionComponent implements OnInit {
   num_adhesion:number;
   date_adhesion:string;
   public date:any;
-
+  public cotclicked : boolean = false;
   constructor(private route:ActivatedRoute,
      private adhservice:AdherentService,
      private datePipe: DatePipe,
-     private cotservice:CotisationService) { }
+     public cotservice:CotisationService) { }
 
   ngOnInit(): void {
     this.adherentId= this.route.snapshot.params['id'];
@@ -41,7 +41,5 @@ export class AdhesionComponent implements OnInit {
     )
     this.date = this.datePipe.transform(new Date(), 'dd-MM-yy');
   }
-  cotClick(){
-    this.cotservice.showCotisation=true;
-    }
+
 }

@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import jwt_decode from "jwt-decode";
 import { LoginComponent } from '../login/login.component';
 import { ToastrService } from 'ngx-toastr';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,8 @@ public  role: string=this.getRole();
   constructor(
     private http:HttpClient,
     private router: Router,
-    private toastr:ToastrService) { }
+    private toastr:ToastrService,
+    private jwtHelper: JwtHelperService,) { }
 
 
 
@@ -76,6 +78,16 @@ getOrganisme(){
   register(form){
     //this.getUrl();
     return this.http.post(environment.APIUri+'/Authenticate/register-association',form);
+  }
+
+  isAuthenticated():boolean{
+    const token = localStorage.getItem("jwt");
+    if (token && !this.jwtHelper.isTokenExpired(token)){
+       return true;
+
+
+    }
+    return false;
   }
 
 

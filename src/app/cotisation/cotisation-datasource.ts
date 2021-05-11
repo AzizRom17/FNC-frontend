@@ -4,6 +4,9 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { CotisationService } from '../services/cotisation.service';
+import { Cotisation1 } from './listecotisation/listecotisation-datasource';
+import { Adherent } from '../listeadherents/adherent-datasource';
+import { AdherentService } from '../services/adherent.service';
 
 // TODO: Replace this with your own data model type
 export interface Cotisation {
@@ -11,9 +14,9 @@ export interface Cotisation {
   exerciceLib:string;
   num_adhesion:number;
   montant:number;
-  nom_fr:string;
-  prenom_fr:string;
-  etat_cotisationLib:string;
+
+
+
 }
 
 // TODO: replace this with real data from your application
@@ -30,11 +33,11 @@ export interface Cotisation {
  * (including sorting, pagination, and filtering).
  */
 export class TableDataSource extends DataSource<Cotisation> {
-  data: Cotisation[] ;
+  data: Adherent[] ;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor(private cotservice:CotisationService) {
+  constructor(private adhservice:AdherentService) {
     super();
   }
 
@@ -44,7 +47,7 @@ export class TableDataSource extends DataSource<Cotisation> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Cotisation[]> {
+  connect(): Observable<Adherent[]> {
 
 
     if (this.paginator && this.sort) {
@@ -69,7 +72,7 @@ export class TableDataSource extends DataSource<Cotisation> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Cotisation[]): Cotisation[] {
+  private getPagedData(data: Adherent[]): Adherent[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -82,7 +85,7 @@ export class TableDataSource extends DataSource<Cotisation> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Cotisation[]): Cotisation[] {
+  private getSortedData(data: Adherent[]): Adherent[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }

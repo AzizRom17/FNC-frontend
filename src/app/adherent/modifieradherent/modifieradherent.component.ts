@@ -5,6 +5,7 @@ import { AdherentService } from 'src/app/services/adherent.service';
 import { AuthService } from 'src/app/services/auth.service';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CotisationService } from 'src/app/services/cotisation.service';
+import { AdherentComponent } from '../adherent.component';
 
 @Component({
   selector: 'app-modifieradherent',
@@ -20,9 +21,10 @@ export class ModifieradherentComponent implements OnInit {
   date_nais:string;
   email:string;
   num_adhesion:number;
+  photo:string;
   constructor(private fb:FormBuilder, private auth:AuthService,
     private route:ActivatedRoute, private adhservice:AdherentService,
-    private cotservice:CotisationService) { }
+    private cotservice:CotisationService, public adhimg:AdherentComponent) { }
 
   ngOnInit(): void {
     this.adherentId= this.route.snapshot.params['id'];

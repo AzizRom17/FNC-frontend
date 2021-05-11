@@ -14,6 +14,8 @@ export interface Adherent {
   date_nais:string;
   email:string;
   num_adhesion:number;
+  exerciceLib:string;
+  montant:number;
 
 
 }

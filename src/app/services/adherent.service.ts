@@ -36,7 +36,7 @@ export class AdherentService {
         (err) => {
           console.log(err)
 
-          this.toastr.error("Connexion échoucée, veuillez vérifier vos identifiants")
+          this.toastr.error("Connexion échouée, veuillez vérifier vos identifiants")
         }
       );
 
@@ -90,5 +90,15 @@ export class AdherentService {
       return  this.http.get<any>(environment.APIUri+'/adherents/getAdherentById/'+x );
     }
 
+    getCredsAdherent(id){
+      let adherentCreds:any
 
+      this.getAdherentById1(id).subscribe(
+        (res)=>{
+          adherentCreds=JSON.stringify(res.nom_fr)
+
+          console.log(res)
+
+});
+}
 }

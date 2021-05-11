@@ -19,10 +19,12 @@
     <div class="col">
       <mat-card-actions align="end">
       <br>
-<button mat-raised-button color="primary" (click)="cotClick()">Afficher Cottisation</button>
+      <button mat-raised-button color="warn" *ngIf="this.cotservice.cotclicked"(click)="this.cotservice.cotHide()">Masquer  Cottisation</button>
+
+<button mat-raised-button color="primary" *ngIf="!this.cotservice.cotclicked"(click)="this.cotservice.cotClick()">Afficher Cottisation</button>
 </mat-card-actions>
 </div>
 </div>
-<app-cotisation></app-cotisation>
+<app-cotisation *ngIf="this.cotservice.cotclicked"></app-cotisation>
 
 </mat-card>

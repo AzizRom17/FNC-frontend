@@ -1,4 +1,4 @@
-<div class="card" data-background-color="white" *ngIf="this.cotservice.showCotisation">
+<div class="card" data-background-color="white" >
   <div class="card-header card-header-primary">
 
 
@@ -11,7 +11,7 @@
   <div class="card-body table-responsive">
     <div class="mat-elevation-z8">
 
-      <table mat-table class="full-width-table" matSort aria-label="Elements">
+      <table  mat-table class="full-width-table" matSort aria-label="Elements">
 
 
 
@@ -25,7 +25,7 @@
               </span>
             </div>
           </th>
-          <td mat-cell *matCellDef="let element">{{element.exerciceLib}}</td>
+          <td mat-cell *matCellDef="let element">{{element.cotisations.exercice.exerciceLib}}</td>
 
         </ng-container>
 
@@ -42,7 +42,7 @@
         <!-- Name Column -->
         <ng-container matColumnDef="montant">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Montant</th>
-          <td mat-cell *matCellDef="let element">{{element.montant}}</td>
+          <td mat-cell *matCellDef="let element">{{element.cotisations.exercice.montant}}</td>
         </ng-container>
 
 
@@ -51,9 +51,7 @@
           <th mat-header-cell *matHeaderCellDef> Action </th>
           <td mat-cell *matCellDef="let row">
 
-            <button mat-icon-button (click)="getId(row.adherentId)" routerLink="/adherent/{{row.adherentId}}">
-              <mat-icon>account_circle</mat-icon>
-            </button>
+
             <!-- <button mat-icon-button [matMenuTriggerFor]="ajouter">
           <mat-icon>add_circle_outline</mat-icon>
         </button>
@@ -73,7 +71,7 @@
 
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" >
 
 
         </tr>
