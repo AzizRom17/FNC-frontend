@@ -12,8 +12,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatDialogModule} from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
+import { AjouterexerciceComponent } from '../cotisation/ajouterexercice/ajouterexercice.component';
+
 
 
 
@@ -24,11 +25,15 @@ import {MatTabsModule} from '@angular/material/tabs';
 const MaterialComponents = [MatButtonModule,MatCardModule,
 MatInputModule,MatFormFieldModule,MatToolbarModule,
 MatSidenavModule,MatIconModule,MatMenuModule,MatSelectModule,
-MatDatepickerModule, MatNativeDateModule,MatDialogModule,MatTabsModule];
+MatDatepickerModule, MatNativeDateModule,MatTabsModule];
 
 @NgModule({
 
   imports: [MaterialComponents],
-  exports:[MaterialComponents]
+  exports:[MaterialComponents],
+  providers: [
+
+  ]
+
 })
 export class MaterialModule { }

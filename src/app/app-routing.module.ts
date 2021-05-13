@@ -10,6 +10,7 @@ import { AjouterexerciceComponent } from './cotisation/ajouterexercice/ajouterex
 import { CotisationComponent } from './cotisation/cotisation.component';
 import { ListecotisationComponent } from './cotisation/listecotisation/listecotisation.component';
 import { ListeexerciceComponent } from './cotisation/listeexercice/listeexercice.component';
+import { ReglementcotisationComponent } from './cotisation/reglementcotisation/reglementcotisation.component';
 import { AuthGuard } from './guards/auth-gard.service';
 import { HomeComponent } from './home/home.component';
 import { ListeadherentsComponent } from './listeadherents/listeadherents.component';
@@ -31,11 +32,12 @@ const routes: Routes = [
   {path:'listeadherents',component:ListeadherentsComponent,canActivate:[AuthGuard]},
   {path:'listeassociationreg',component:ListeassociationregComponent,canActivate:[AuthGuard]},
   {path:'adherent/:id',component:ModifieradherentComponent,canActivate:[AuthGuard]},
-  {path:'cotisation',component:ListeexerciceComponent,canActivate:[AuthGuard]},
+  {path:'exercice',component:ListeexerciceComponent,canActivate:[AuthGuard]},
   {path:'listecotisation',component:ListecotisationComponent,canActivate:[AuthGuard]},
   {path:'cotisationadherent/:id',component:CotisationComponent,canActivate:[AuthGuard]},
   {path:'ajouterexercice',component:AjouterexerciceComponent,canActivate:[AuthGuard]},
-  {path:"**",component:PagenotfoundComponent}
+  {path:'reglement',component:ReglementcotisationComponent,canActivate:[AuthGuard]},
+
 ];
 
 @NgModule({

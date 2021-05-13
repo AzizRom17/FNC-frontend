@@ -1,9 +1,6 @@
-<!-- Ajouter Adherent -->
 
-<mat-card class="shipping-card"  >
-  <mat-card-title>Ajouter un exercice</mat-card-title>
-  <mat-card-content>Veuillez remplir les champs suivants:</mat-card-content>
-  <form [formGroup]="exerciceForm">
+<h2 mat-dialog-title>Ajouter un exercice</h2>
+  <mat-dialog-content [formGroup]="exerciceForm">
 
 
 
@@ -15,9 +12,13 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <button (click)="generateCotisation()">add</button>
 
-     </form>
-</mat-card>
 
-<!-- Adherent Table -->
+     </mat-dialog-content>
+     <mat-dialog-actions align="end">
+      <button class="mat-raised-button"(click)="close()">Fermer</button>
+      <button class="mat-raised-button mat-accent"(click)="generateCotisation()">Générer</button>
+  </mat-dialog-actions>
+
+
+

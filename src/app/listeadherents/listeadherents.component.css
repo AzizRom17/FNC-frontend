@@ -10,3 +10,15 @@
   display: flex;
   justify-content: center;
 }
+.hidden{
+  display:none;
+}
+.green-icon {
+  color: rgba(71, 209, 71, 0.842);
+}
+.white-icon {
+  color: white;
+}
+.red-icon {
+  color: rgb(224, 81, 81);
+}

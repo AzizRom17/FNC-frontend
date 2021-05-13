@@ -14,8 +14,8 @@ export interface Cotisation1 {
   exerciceLib:string;
   num_adhesion:number;
   montant:number;
-  nom_fr:string;
-  prenom_fr:string;
+  adherent:{nom_fr:string,
+  prenom_fr:string;}
   etat_cotisationLib:string;
   adherentId:number;
   etat_cotisationId:number;
@@ -82,8 +82,8 @@ export class TableDataSource extends DataSource<Cotisation1> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'exerciceLib': return compare(a.exerciceLib, b.exerciceLib, isAsc);
-        case 'num_adhesion': return compare(+a.num_adhesion, +b.num_adhesion, isAsc);
+        case 'nom_fr': return compare(a.adherent.nom_fr, b.adherent.nom_fr, isAsc);
+        case 'etat_cotisationLib': return compare(+a.etat_cotisationLib, +b.etat_cotisationLib, isAsc);
         default: return 0;
       }
     });

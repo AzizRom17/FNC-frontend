@@ -35,11 +35,12 @@ export class CotisationService {
       this.http.post(environment.APIUri + '/cotisations', form).subscribe(
         (response) => {
           console.log(response);
-          this.toastr.success('La cotisation été ajouté avec succéss!');
+
         },
         (err) => {
           console.log(err);
         }
       );
     }
+
 }

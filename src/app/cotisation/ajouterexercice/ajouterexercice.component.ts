@@ -1,10 +1,12 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
+import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AdherentService } from 'src/app/services/adherent.service';
 import { CotisationService } from 'src/app/services/cotisation.service';
-import { ExerciceService } from 'src/app/services/exercice.service';
-import { Exercice } from '../listeexercice/listeexercice-datasource';
+
 
 export interface ExerciceLib {
   value: string;
@@ -28,34 +30,44 @@ export class AjouterexerciceComponent implements OnInit {
   ];
   adherent: any;
 
-
-  constructor(private adhservice: AdherentService,private cotservice:CotisationService, private fb:FormBuilder) {}
+  constructor(
+    private adhservice: AdherentService,
+    private cotservice: CotisationService,
+    private fb: FormBuilder,
+    private router: Router,
+    private toastr: ToastrService,
+    private dialogRef: MatDialogRef<AjouterexerciceComponent>
+  ) {}
 
   ngOnInit(): void {
     this.exerciceForm = this.fb.group({
-      //adherentId:[0],
-
-      exerciceLib: ['']})
+      exerciceLib: [''],
+    });
   }
 
   generateCotisation() {
-    console.log(this.exerciceForm.value)
+    console.log(this.exerciceForm.value);
     this.adhservice.getAdherent().subscribe((res) => {
       this.adherent = res;
 
       for (let key in res) {
         //console.log(res[key].adherentId);
-        const data={
-          etat_cotisation:{etat_cotisationLib:"Non payée"},
-          exercice:{
-            exerciceLib:this.exerciceForm.value.exerciceLib,
-            montant:140
+        const data = {
+          etat_cotisation: { etat_cotisationLib: 'Non payée' },
+          exercice: {
+            exerciceLib: this.exerciceForm.value.exerciceLib,
+            montant: 140,
           },
-          adherentId:res[key].adherentId
-        }
+          adherentId: res[key].adherentId,
+        };
         console.log(data);
-        this.cotservice.addCotisation(data)
+        this.cotservice.addCotisation(data);
+        this.toastr.success('Les cotisations ont été généré avec succés!');
       }
     });
+    this.router.navigateByUrl('/listecotisation');
+  }
+  close() {
+    this.dialogRef.close();
   }
 }

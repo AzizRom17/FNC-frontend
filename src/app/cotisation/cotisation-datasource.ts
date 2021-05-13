@@ -32,7 +32,7 @@ export interface Cotisation {
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class TableDataSource extends DataSource<Cotisation> {
+export class TableDataSource extends DataSource<Adherent> {
   data: Adherent[] ;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
@@ -93,7 +93,7 @@ export class TableDataSource extends DataSource<Cotisation> {
     return data.sort((a, b) => {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
-        case 'exerciceLib': return compare(a.exerciceLib, b.exerciceLib, isAsc);
+        case 'nom_fr': return compare(a.nom_fr, b.nom_fr, isAsc);
         case 'num_adhesion': return compare(+a.num_adhesion, +b.num_adhesion, isAsc);
         default: return 0;
       }

@@ -25,15 +25,26 @@
               </span>
             </div>
           </th>
-          <td mat-cell *matCellDef="let element">{{element.cotisations.exercice.exerciceLib}}</td>
+          <td mat-cell *matCellDef="let element">{{element.exercice.exerciceLib}}</td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="etat_cotisationLib">
+
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <div class="foukspan">
+              <span>
+                Année
+              </span>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">{{element.etat_cotisation.etat_cotisationLib}}</td>
 
         </ng-container>
 
         <!-- Name Column -->
-        <ng-container matColumnDef="num_adhesion">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>N° d'adhésion </th>
-          <td mat-cell *matCellDef="let element">{{element.num_adhesion}}</td>
-        </ng-container>
+
         <!-- Name Column -->
 
 
@@ -42,7 +53,7 @@
         <!-- Name Column -->
         <ng-container matColumnDef="montant">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Montant</th>
-          <td mat-cell *matCellDef="let element">{{element.cotisations.exercice.montant}}</td>
+          <td mat-cell *matCellDef="let element">{{element.exercice.montant}}</td>
         </ng-container>
 
 
@@ -71,7 +82,8 @@
 
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;" >
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        [ngClass]="{'make-red': row.etat_cotisation.etat_cotisationLib=='Non payée', 'make-green': row.etat_cotisation.etat_cotisationLib!='Non payée'}" >
 
 
         </tr>

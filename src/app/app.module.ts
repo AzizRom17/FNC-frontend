@@ -51,6 +51,12 @@ import { CotisationComponent } from './cotisation/cotisation.component';
 import { ListeexerciceComponent } from './cotisation/listeexercice/listeexercice.component';
 import { ListecotisationComponent } from './cotisation/listecotisation/listecotisation.component';
 import { AjouterexerciceComponent } from './cotisation/ajouterexercice/ajouterexercice.component';
+import {MatDialog, MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import { ReglementcotisationComponent } from './cotisation/reglementcotisation/reglementcotisation.component';
+import { ConfirmdialogComponent } from './confirmdialog/confirmdialog.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -81,7 +87,9 @@ export function tokenGetter() {
      CotisationComponent,
      ListeexerciceComponent,
      ListecotisationComponent,
-     AjouterexerciceComponent
+     AjouterexerciceComponent,
+     ReglementcotisationComponent,
+     ConfirmdialogComponent
 
 
 
@@ -110,12 +118,21 @@ export function tokenGetter() {
     MatSortModule,
     MatInputModule,
     MatSelectModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule,
+    Ng2SearchPipeModule,FormsModule
 
   ],
   providers: [AuthGuard,
     {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {useUtc: true}},
-  ListeadherentsComponent,DatePipe,AdherentComponent],
-  bootstrap: [AppComponent]
+  ListeadherentsComponent,DatePipe,AdherentComponent,{
+    provide: MatDialogRef,
+    useValue: {
+      close: (dialogResult: any) => { }
+    }
+  }
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [AjouterexerciceComponent]
 })
 export class AppModule { }

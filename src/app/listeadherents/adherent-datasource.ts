@@ -14,9 +14,17 @@ export interface Adherent {
   date_nais:string;
   email:string;
   num_adhesion:number;
-  exerciceLib:string;
-  montant:number;
 
+
+  cotisations:[
+    etat_cotisation:{
+      etat_cotisationLib:string;
+    },
+    exercice:{
+      exerciceLib:string;
+      montant:number;
+    }
+  ];
 
 }
 
