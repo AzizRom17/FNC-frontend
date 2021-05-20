@@ -9,6 +9,12 @@
       <input matInput (keyup)="applyFilter($event.target.value)" >
     </mat-form-field>
 
+      <p class="card-category">
+        Cliquez ici pour générer un exercice:
+        <button mat-icon-button (click)="openDialogExercice()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </p>
   </div>
 
   <div class="card-body table-responsive">
@@ -59,11 +65,26 @@
 
 
         <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef> Regler </th>
+          <th mat-header-cell *matHeaderCellDef> Action </th>
 
-          <td mat-cell *matCellDef="let element"> <button mat-icon-button
-              (click)="openDialog(element.etat_cotisation.etat_cotisationId,element.cotisationId,element.adherent.adherentId)">
-              <mat-icon class="white-icon">payments</mat-icon>
+          <td mat-cell *matCellDef="let element"> <button  [matMenuTriggerFor]="regler" id="icon" mat-icon-button
+             >
+             <mat-icon class="white-icon">payments</mat-icon>
+
+            </button>
+            <mat-menu #regler="matMenu">
+              <button mat-menu-item *ngIf="element.etat_cotisation.etat_cotisationLib!=='Payée'"
+              (click)="openDialogRegler(element.etat_cotisation.etat_cotisationId,element.cotisationId,element.adherent.adherentId)">
+                              <span>Regler</span>
+              </button>
+              <button mat-menu-item
+              (click)="openDialogConsulterReg(element.cotisationId)">
+                              <span>Historique</span>
+              </button>
+              </mat-menu>
+
+            <button id="icon" mat-icon-button *ngIf="element.etat_cotisation.etat_cotisationLib=='Payée'">
+              <mat-icon class="white-icon">done</mat-icon>
             </button>
 
           </td>

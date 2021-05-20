@@ -47,11 +47,27 @@ export class CotisationComponent implements AfterViewInit {
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef,
     private adhservice: AdherentService,
-
+    private dialog: MatDialog
 
   ) {}
 
+  openDialog(x,y,z) {
 
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+
+      etat_cotisationId:x,
+      cotisationId:y,
+      adherentId:z
+
+
+  };
+
+    this.dialog.open(ReglementcotisationComponent, dialogConfig);
+}
   ngAfterViewInit() {
     this.adherentId = this.route.snapshot.params['id'];
 

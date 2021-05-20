@@ -17,3 +17,13 @@
 .make-green {
   background-color: rgb(79, 218, 79)
 }
+.white-icon {
+  color: white;
+}
+.red-icon {
+  color: rgb(224, 81, 81);
+}
+#icon :hover{
+  transform: scale(1.2);
+
+}

@@ -56,6 +56,7 @@ import { ReglementcotisationComponent } from './cotisation/reglementcotisation/r
 import { ConfirmdialogComponent } from './confirmdialog/confirmdialog.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
+import { ConsulterreglementcotisationComponent } from './cotisation/consulterreglementcotisation/consulterreglementcotisation.component';
 
 
 
@@ -89,7 +90,8 @@ export function tokenGetter() {
      ListecotisationComponent,
      AjouterexerciceComponent,
      ReglementcotisationComponent,
-     ConfirmdialogComponent
+     ConfirmdialogComponent,
+     ConsulterreglementcotisationComponent
 
 
 

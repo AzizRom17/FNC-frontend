@@ -7,6 +7,7 @@ import { ArmechasseComponent } from './armechasse/armechasse.component';
 import { ListeassociationregComponent } from './association/listeassociationreg/listeassociationreg.component';
 import { ChienchasseComponent } from './chienchasse/chienchasse.component';
 import { AjouterexerciceComponent } from './cotisation/ajouterexercice/ajouterexercice.component';
+import { ConsulterreglementcotisationComponent } from './cotisation/consulterreglementcotisation/consulterreglementcotisation.component';
 import { CotisationComponent } from './cotisation/cotisation.component';
 import { ListecotisationComponent } from './cotisation/listecotisation/listecotisation.component';
 import { ListeexerciceComponent } from './cotisation/listeexercice/listeexercice.component';
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path:'listecotisation',component:ListecotisationComponent,canActivate:[AuthGuard]},
   {path:'cotisationadherent/:id',component:CotisationComponent,canActivate:[AuthGuard]},
   {path:'ajouterexercice',component:AjouterexerciceComponent,canActivate:[AuthGuard]},
+  {path:'consulterreglement',component:ConsulterreglementcotisationComponent,canActivate:[AuthGuard]},
   {path:'reglement',component:ReglementcotisationComponent,canActivate:[AuthGuard]},
 
 ];

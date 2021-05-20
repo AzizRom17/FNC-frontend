@@ -1,49 +1,32 @@
-import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { map } from 'rxjs/operators';
-import { Observable, of as observableOf, merge } from 'rxjs';
-import { AdherentService } from '../services/adherent.service';
+import { DataSource } from "@angular/cdk/collections";
+import { MatPaginator } from "@angular/material/paginator";
+import { MatSort } from "@angular/material/sort";
+import { merge, Observable,of as observableOf } from "rxjs";
+import { map } from "rxjs/operators";
+import { ReglementcotisationService } from "src/app/services/reglementcotisation.service";
 
-// TODO: Replace this with your own data model type
-export interface Adherent {
+export interface RegCotisation {
 
+  exerciceLib:string;
   nom_fr:string;
-
   prenom_fr:string;
-  date_nais:string;
-  email:string;
-  num_adhesion:number;
+  montant:number;
+  mnt_reg:number;
+  modalite:string;
+  banque:string;
+  num_piece:string;
 
 
 
-      etat_cotisationLib:string;
-      etat_cotisationId:number;
-
-      exerciceLib:string;
-      montant:number;
 
 }
 
-// TODO: replace this with real data from your application
-// const EXAMPLE_DATA: TableItem[] = [
-//   {AdherentId: 0, Nom_Ar: 'azazaz',Nom_Fr:'',Prenom_Ar:''  ,Prenom_Fr:'',  Date_naiss:'',Lieu_nais_Ar:'',Lieu_nais_Fr:'',Nationalite:'',Adresse_Ar:'',Adresse_Fr:'',Ville_Ar:'',Ville_Fr:' ',CP:''},
-
-// ];
-
-
-
-/**
- * Data source for the Table view. This class should
- * encapsulate all logic for fetching and manipulating the displayed data
- * (including sorting, pagination, and filtering).
- */
-export class TableDataSource extends DataSource<Adherent> {
-  data: Adherent[] ;
+export class TableDataSource extends DataSource<RegCotisation> {
+  data: RegCotisation[] ;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor(private adhservice:AdherentService) {
+  constructor(private regcotisationservice:ReglementcotisationService) {
     super();
   }
 
@@ -53,7 +36,7 @@ export class TableDataSource extends DataSource<Adherent> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Adherent[]> {
+  connect(): Observable<RegCotisation[]> {
 
 
     if (this.paginator && this.sort) {
@@ -78,7 +61,7 @@ export class TableDataSource extends DataSource<Adherent> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Adherent[]): Adherent[] {
+  private getPagedData(data: RegCotisation[]): RegCotisation[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -91,7 +74,7 @@ export class TableDataSource extends DataSource<Adherent> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Adherent[]): Adherent[] {
+  private getSortedData(data: RegCotisation[]): RegCotisation[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -100,7 +83,7 @@ export class TableDataSource extends DataSource<Adherent> {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
         case 'nom_fr': return compare(a.nom_fr, b.nom_fr, isAsc);
-        case 'prenom_fr': return compare(+a.prenom_fr, +b.prenom_fr, isAsc);
+        case 'mnt_reg': return compare(+a.mnt_reg, +b.mnt_reg, isAsc);
         default: return 0;
       }
     });

@@ -61,18 +61,18 @@
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Action</th>
           <td mat-cell *matCellDef="let row">
-            <button
+            <button  id="icon"
               mat-icon-button
               (click)="getId(row.adherentId)"
               routerLink="/adherent/{{ row.adherentId }}"
             >
               <mat-icon class="green-icon">account_circle</mat-icon>
             </button>
-            <button
+            <button  id="icon"
               mat-icon-button
               (click)="openDialog(row.etat_adherent.etat_adherentId)"
             >
-              <mat-icon class="red-icon">content_paste_off</mat-icon>
+              <mat-icon id="icon"class="red-icon">content_paste_off</mat-icon>
             </button>
           </td>
         </ng-container>

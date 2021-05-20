@@ -60,7 +60,7 @@ export class AdherentComponent implements OnInit {
     private router:Router,
     private http:HttpClient
   ) {}
-
+  dateTime = new Date()
   ngOnInit(): void {
 
       this.adherentForm = this.fb.group({
@@ -78,7 +78,7 @@ export class AdherentComponent implements OnInit {
         telephone: [0],
         email: [''],
         photo:[],
-
+        date_adhesion:this.dateTime,
         num_adhesion: [0],
         etat_adherent:{etat_adherentLib:'actif'},
         association: { nom: this.auth.getOrganisme() },

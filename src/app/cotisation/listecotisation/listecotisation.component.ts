@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { AdherentService } from 'src/app/services/adherent.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { CotisationService } from 'src/app/services/cotisation.service';
+import { AjouterexerciceComponent } from '../ajouterexercice/ajouterexercice.component';
+import { ConsulterreglementcotisationComponent } from '../consulterreglementcotisation/consulterreglementcotisation.component';
 import { ReglementcotisationComponent } from '../reglementcotisation/reglementcotisation.component';
 import { Cotisation1 } from './listecotisation-datasource';
 
@@ -46,7 +48,7 @@ export class ListecotisationComponent implements AfterViewInit {
     private dialog: MatDialog
   ) {}
 
-  openDialog(x,y,z) {
+  openDialogRegler(x,y,z) {
 
     const dialogConfig = new MatDialogConfig();
 
@@ -63,6 +65,37 @@ export class ListecotisationComponent implements AfterViewInit {
 
     this.dialog.open(ReglementcotisationComponent, dialogConfig);
 }
+
+
+openDialogConsulterReg(x) {
+
+  const dialogConfig =  new MatDialogConfig();
+  dialogConfig.height='400px';
+  dialogConfig.width='800px';
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.data = {
+
+
+    cotisationId:x,
+
+
+
+};
+
+  this.dialog.open(ConsulterreglementcotisationComponent, dialogConfig);
+}
+
+
+openDialogExercice() {
+  const dialogConfig = new MatDialogConfig();
+
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+
+  this.dialog.open(AjouterexerciceComponent, dialogConfig);
+}
+
   ngAfterViewInit() {
 
 

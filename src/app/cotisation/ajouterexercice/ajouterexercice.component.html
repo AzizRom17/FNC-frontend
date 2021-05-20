@@ -1,13 +1,15 @@
 
 <h2 mat-dialog-title>Ajouter un exercice</h2>
-  <mat-dialog-content [formGroup]="exerciceForm">
+  <mat-dialog-content [formGroup]="exerciceForm" >
 
 
 
-        <mat-form-field class="full-width">
-          <mat-select placeholder="Année" formControlName="exerciceLib">
-            <mat-option *ngFor="let ex of exs" [value]="ex.value"  >
-              {{ ex.value }}
+        <mat-form-field class="full-width" >
+          <mat-select placeholder="Année"  formControlName="exerciceLib">
+            <mat-option *ngFor="let ex of exercice" [value]="ex.exerciceLib"  >
+              {{ ex.exerciceLib }}
+
+
 
             </mat-option>
           </mat-select>

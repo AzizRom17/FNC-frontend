@@ -22,3 +22,7 @@
 .red-icon {
   color: rgb(224, 81, 81);
 }
+#icon :hover{
+  transform: scale(1.2);
+
+}

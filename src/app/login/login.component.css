@@ -1,3 +1,8 @@
+#login-card{
+  border-radius: 10%;
+  border-color:indigo;
+  border: 10px;
+}
 mat-card {
   max-width: 400px;
   margin: 2em auto;
@@ -10,5 +15,15 @@ mat-form-field {
 
 .image{
   width: 120px;
+
+}
+#login-btn{
+  background-color: #D9AFD9;
+  background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+
+  width:80%;
+}
+#login-btn:hover{
+  transform:scale(1.2);
 
 }
