@@ -10,10 +10,12 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
+import { ConsulterreglementassuranceComponent } from '../assurance/consulterreglementassurance/consulterreglementassurance.component';
 import { Adherent } from '../listeadherents/adherent-datasource';
 import { AdherentService } from '../services/adherent.service';
 import { AuthService } from '../services/auth.service';
 import { CotisationService } from '../services/cotisation.service';
+import { ConsulterreglementcotisationComponent } from './consulterreglementcotisation/consulterreglementcotisation.component';
 import { Cotisation } from './cotisation-datasource';
 import { ReglementcotisationComponent } from './reglementcotisation/reglementcotisation.component';
 
@@ -50,6 +52,24 @@ export class CotisationComponent implements AfterViewInit {
     private dialog: MatDialog
 
   ) {}
+  openDialogConsulterReg(x) {
+
+    const dialogConfig =  new MatDialogConfig();
+    dialogConfig.height='400px';
+    dialogConfig.width='800px';
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+
+
+      cotisationId:x,
+
+
+
+  };
+
+    this.dialog.open(ConsulterreglementcotisationComponent, dialogConfig);
+  }
 
   openDialog(x,y,z) {
 

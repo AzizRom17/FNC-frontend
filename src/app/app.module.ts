@@ -57,6 +57,12 @@ import { ConfirmdialogComponent } from './confirmdialog/confirmdialog.component'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { FormsModule } from '@angular/forms';
 import { ConsulterreglementcotisationComponent } from './cotisation/consulterreglementcotisation/consulterreglementcotisation.component';
+import { AjouterassuranceComponent } from './assurance/ajouterassurance/ajouterassurance.component';
+import { ListeassuranceComponent } from './assurance/listeassurance/listeassurance.component';
+import { ReglementassuranceComponent } from './assurance/reglementassurance/reglementassurance.component';
+import { AssuranceComponent } from './assurance/assurance.component';
+import { ConsulterreglementassuranceComponent } from './assurance/consulterreglementassurance/consulterreglementassurance.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
 
 
 
@@ -91,7 +97,13 @@ export function tokenGetter() {
      AjouterexerciceComponent,
      ReglementcotisationComponent,
      ConfirmdialogComponent,
-     ConsulterreglementcotisationComponent
+     ConsulterreglementcotisationComponent,
+     AjouterassuranceComponent,
+     ListeassuranceComponent,
+     ReglementassuranceComponent,
+     AssuranceComponent,
+     ConsulterreglementassuranceComponent,
+     MessagerieComponent
 
 
 

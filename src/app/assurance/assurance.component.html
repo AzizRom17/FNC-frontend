@@ -1,0 +1,181 @@
+<div class="card" data-background-color="white" >
+  <div class="card-header card-header-primary">
+
+
+
+    <h4 class="card-title">Liste des contrat d'assurance de l'adhérent</h4>
+    <p class="card-category">
+      Cliquez ici pour ajouter une assurance:
+      <button mat-icon-button (click)="openDialogAjouter(this.adherentId)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </p>
+
+
+  </div>
+
+  <div class="card-body table-responsive">
+    <div class="mat-elevation-z8">
+
+      <table  mat-table class="full-width-table" matSort aria-label="Elements">
+
+
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="exerciceLib">
+
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <div class="foukspan">
+              <span>
+                Année
+              </span>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">{{element.exercice.exerciceLib}}</td>
+
+        </ng-container>
+
+
+        <ng-container matColumnDef="date_effet">
+
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <div class="foukspan">
+              <span>
+                Date d'effet
+              </span>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">{{element.contrat.date_effet| date:'dd-MM-yy'}}</td>
+
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="date_souscription">
+
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <div class="foukspan">
+              <span>
+                Date de souscription
+              </span>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">{{element.contrat.date_souscription| date:'dd-MM-yy'}}</td>
+
+        </ng-container>
+
+        <!-- Name Column -->
+
+        <ng-container matColumnDef="duree">
+
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <div class="foukspan">
+              <span>
+                Durée
+              </span>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">{{element.contrat.duree}}</td>
+
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="num_contrat">
+
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <div class="foukspan">
+              <span>
+                N° Contrat
+              </span>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">{{element.contrat.num_contrat}}</td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="compagnieLib">
+
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <div class="foukspan">
+              <span>
+                Compagnie
+              </span>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">{{element.contrat.compagnieLib}}</td>
+
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="etat_contratLib">
+
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <div class="foukspan">
+              <span>
+                Année
+              </span>
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element">{{element.contrat.etat_contrat.etat_contratLib}}</td>
+
+        </ng-container>
+
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="montant">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Montant</th>
+          <td mat-cell *matCellDef="let element">{{element.exercice.montant}}</td>
+        </ng-container>
+
+
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let row">
+            <button  [matMenuTriggerFor]="regler" id="icon" mat-icon-button
+             >
+             <mat-icon class="red-icon">payments</mat-icon>
+
+            </button>
+            <mat-menu #regler="matMenu">
+              <button mat-menu-item
+              (click)="openDialog(row.etat_assurance.etat_assuranceId,row.assuranceId,row.adherentId)">
+                              <span>Regler <mat-icon class="red-icon">credit_score</mat-icon></span>
+              </button>
+              <button mat-menu-item
+              (click)="openDialogConsulterReg(row.assuranceId)">
+                              <span>Historique <mat-icon class="red-icon">history</mat-icon></span>
+              </button>
+              </mat-menu>
+            <!-- <button id="icon" mat-icon-button *ngIf="row.etat_cotisation.etat_cotisationLib=='Payée'">
+              <mat-icon class="white-icon">done</mat-icon>
+            </button>  -->
+
+
+
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="add">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Add</th>
+          <tr></tr>
+
+        </ng-container>
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+         >
+
+
+        </tr>
+
+      </table>
+
+      <mat-paginator #paginator [length]="dataSource?.data?.length" [pageIndex]="0" [pageSize]="10"
+        [pageSizeOptions]="[5, 10, 20]">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

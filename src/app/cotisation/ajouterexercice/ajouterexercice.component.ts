@@ -18,15 +18,7 @@ export interface ExerciceLib {
 })
 export class AjouterexerciceComponent implements OnInit {
   exerciceForm: FormGroup;
-  exs: ExerciceLib[] = [
-    { value: '2021', viewValue: '2021' },
-    { value: '2022', viewValue: '2022' },
-    { value: '2023', viewValue: '2023' },
-    { value: '2024', viewValue: '2024' },
-    { value: '2025', viewValue: '2025' },
-    { value: '2026', viewValue: '2026' },
-    { value: '2027', viewValue: '2027' },
-  ];
+
   adherent: any;
   public exercice: any;
   exerciceId: number;
@@ -72,7 +64,7 @@ export class AjouterexerciceComponent implements OnInit {
           const data = {
             etat_cotisation: { etat_cotisationLib: 'Non payée' },
 
-            exerciceId: this.exerciceId,
+            exerciceId:this.exerciceId,
 
             adherentId: res[key].adherentId,
           };

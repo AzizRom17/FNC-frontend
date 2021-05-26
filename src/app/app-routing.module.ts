@@ -5,6 +5,8 @@ import { ModifieradherentComponent } from './adherent/modifieradherent/modifiera
 
 import { ArmechasseComponent } from './armechasse/armechasse.component';
 import { ListeassociationregComponent } from './association/listeassociationreg/listeassociationreg.component';
+import { AssuranceComponent } from './assurance/assurance.component';
+import { ListeassuranceComponent } from './assurance/listeassurance/listeassurance.component';
 import { ChienchasseComponent } from './chienchasse/chienchasse.component';
 import { AjouterexerciceComponent } from './cotisation/ajouterexercice/ajouterexercice.component';
 import { ConsulterreglementcotisationComponent } from './cotisation/consulterreglementcotisation/consulterreglementcotisation.component';
@@ -39,6 +41,10 @@ const routes: Routes = [
   {path:'ajouterexercice',component:AjouterexerciceComponent,canActivate:[AuthGuard]},
   {path:'consulterreglement',component:ConsulterreglementcotisationComponent,canActivate:[AuthGuard]},
   {path:'reglement',component:ReglementcotisationComponent,canActivate:[AuthGuard]},
+  {path:'listeassurance',component:ListeassuranceComponent,canActivate:[AuthGuard]},
+  {path:'assuranceadherent/:id',component:AssuranceComponent,canActivate:[AuthGuard]},
+
+
 
 ];
 

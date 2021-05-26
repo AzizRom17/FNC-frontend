@@ -3,30 +3,21 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { CotisationService } from '../services/cotisation.service';
+import { Adherent } from '../listeadherents/adherent-datasource';
 import { AdherentService } from '../services/adherent.service';
+import { AssuranceService } from '../services/assurance.service';
 
 // TODO: Replace this with your own data model type
-export interface Adherent {
+export interface Assurance {
 
   nom_fr:string;
-
   prenom_fr:string;
-  date_nais:string;
-  email:string;
   num_adhesion:number;
-
-
-
-      etat_cotisationLib:string;
-      etat_cotisationId:number;
-
-      exerciceLib:string;
-      montant:number;
-      date_effet:string;
-      date_souscription:string;
-      duree:number;
-      num_contrat:string;
-      compagnieLib:string;
+  montant:number;
+  date_creation:string;
+  etat_assuranceLib:string;
+  exerciceLib:string;
 
 }
 
@@ -43,12 +34,12 @@ export interface Adherent {
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class TableDataSource extends DataSource<Adherent> {
-  data: Adherent[] ;
+ export class TableDataSource extends DataSource<Assurance> {
+  data: Assurance[] ;
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
 
-  constructor(private adhservice:AdherentService) {
+  constructor(private assuranceservice:AssuranceService) {
     super();
   }
 
@@ -58,7 +49,7 @@ export class TableDataSource extends DataSource<Adherent> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<Adherent[]> {
+  connect(): Observable<Assurance[]> {
 
 
     if (this.paginator && this.sort) {
@@ -83,7 +74,7 @@ export class TableDataSource extends DataSource<Adherent> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: Adherent[]): Adherent[] {
+  private getPagedData(data: Assurance[]): Assurance[] {
     if (this.paginator) {
       const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
       return data.splice(startIndex, this.paginator.pageSize);
@@ -96,7 +87,7 @@ export class TableDataSource extends DataSource<Adherent> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: Adherent[]): Adherent[] {
+  private getSortedData(data: Assurance[]): Assurance[] {
     if (!this.sort || !this.sort.active || this.sort.direction === '') {
       return data;
     }
@@ -105,7 +96,7 @@ export class TableDataSource extends DataSource<Adherent> {
       const isAsc = this.sort?.direction === 'asc';
       switch (this.sort?.active) {
         case 'nom_fr': return compare(a.nom_fr, b.nom_fr, isAsc);
-        case 'prenom_fr': return compare(+a.prenom_fr, +b.prenom_fr, isAsc);
+        case 'num_adhesion': return compare(+a.num_adhesion, +b.num_adhesion, isAsc);
         default: return 0;
       }
     });

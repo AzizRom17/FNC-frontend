@@ -1,0 +1,44 @@
+
+<h2 mat-dialog-title>Veuillez choisir un exercice</h2>
+<mat-dialog-content [formGroup]="exerciceForm" >
+
+
+      <mat-form-field class="full-width">
+        <mat-label>Référence d'adhésion</mat-label>
+        <input matInput formControlName="reference_adhesion">
+      </mat-form-field>
+      <mat-form-field class="full-width" >
+        <mat-select placeholder="Année"  formControlName="exerciceLib">
+          <mat-option *ngFor="let ex of exercice" [value]="ex.exerciceLib"  >
+            {{ ex.exerciceLib }}
+
+
+
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Montant</mat-label>
+        <input matInput formControlName="montant">
+      </mat-form-field>
+
+      <mat-form-field class="full-width" >
+        <mat-select placeholder="Année"  formControlName="compagnieLib">
+          <mat-option *ngFor="let co of compagnie" [value]="co.compagnieLib"  >
+            {{ co.compagnieLib }}
+
+
+
+          </mat-option>
+        </mat-select>
+        </mat-form-field>
+
+   </mat-dialog-content>
+   <mat-dialog-actions align="end">
+    <button class="mat-raised-button"(click)="close()">Fermer</button>
+    <button class="mat-raised-button mat-accent"(click)="generateAssurance()">Générer</button>
+</mat-dialog-actions>
+
+
+
+

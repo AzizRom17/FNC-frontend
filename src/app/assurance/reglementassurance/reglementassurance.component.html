@@ -1,0 +1,55 @@
+
+<h2 mat-dialog-title>Regler la cotisation</h2>
+<h2 style="color:red">Montant à payer:   </h2>
+<mat-dialog-content [formGroup]="reglementForm">
+
+
+
+
+  <mat-form-field class="full-width">
+        <mat-label>Montant  </mat-label>
+        <input matInput type="text" formControlName="mnt_reg" required  />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="debut" formControlName="date_reg" />
+        <mat-datepicker-toggle matSuffix [for]="debut"></mat-datepicker-toggle>
+        <mat-datepicker #debut startView="year" [startAt]="2021"></mat-datepicker>
+      </mat-form-field>
+      <div class="row" >
+        <div class="col-6">
+      <mat-form-field class="full-width">
+        <mat-label>N° pièce  </mat-label>
+        <input matInput type="text" formControlName="num_piece" required  />
+      </mat-form-field>
+    </div>
+<div class="col-6">
+      <mat-form-field class="full-width">
+        <mat-label>Banque  </mat-label>
+        <input matInput type="text" formControlName="banque" required  />
+      </mat-form-field>
+    </div>
+    </div>
+      <mat-form-field class="full-width" >
+        <mat-select placeholder="Modalité"  formControlName="modaliteLib">
+          <mat-option *ngFor="let mo of modalite" [value]="mo.modaliteLib"  >
+            {{ mo.modaliteLib }}
+
+
+
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+
+
+   </mat-dialog-content>
+   <mat-dialog-actions align="end">
+    <button class="mat-raised-button" (click)="close()">Fermer</button>
+    <button class="mat-raised-button mat-accent" (click)="save(reglementForm)">Regler</button>
+</mat-dialog-actions>
+
+
+
