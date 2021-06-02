@@ -18,6 +18,7 @@ import { AuthGuard } from './guards/auth-gard.service';
 import { HomeComponent } from './home/home.component';
 import { ListeadherentsComponent } from './listeadherents/listeadherents.component';
 import { LoginComponent } from './login/login.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { PermischasseComponent } from './permischasse/permischasse.component';
 import { RegisterComponent } from './register/register.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
   {path:'reglement',component:ReglementcotisationComponent,canActivate:[AuthGuard]},
   {path:'listeassurance',component:ListeassuranceComponent,canActivate:[AuthGuard]},
   {path:'assuranceadherent/:id',component:AssuranceComponent,canActivate:[AuthGuard]},
+  {path:'messagerie',component:MessagerieComponent,canActivate:[AuthGuard]},
 
 
 

@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NgxSoapModule } from 'ngx-soap';
 
 
 import { LayoutModule } from '@angular/cdk/layout';
@@ -63,6 +64,7 @@ import { ReglementassuranceComponent } from './assurance/reglementassurance/regl
 import { AssuranceComponent } from './assurance/assurance.component';
 import { ConsulterreglementassuranceComponent } from './assurance/consulterreglementassurance/consulterreglementassurance.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
+import { ConsultermessageComponent } from './messagerie/consultermessage/consultermessage.component';
 
 
 
@@ -103,7 +105,8 @@ export function tokenGetter() {
      ReglementassuranceComponent,
      AssuranceComponent,
      ConsulterreglementassuranceComponent,
-     MessagerieComponent
+     MessagerieComponent,
+     ConsultermessageComponent
 
 
 
@@ -134,7 +137,7 @@ export function tokenGetter() {
     MatSelectModule,
     MatRadioModule,
     MatDialogModule,
-    Ng2SearchPipeModule,FormsModule
+    Ng2SearchPipeModule,FormsModule,NgxSoapModule
 
   ],
   providers: [AuthGuard,

@@ -1,1 +1,35 @@
-<p>messagerie works!</p>
+<mat-card class="shipping-card"  >
+  <mat-card-title>Envoyer un message</mat-card-title>
+  <mat-card-content>Veuillez remplir les champs suivants:</mat-card-content>
+  <form [formGroup]="messagerieForm" (ngSubmit)="onSubmit()" >
+
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field   class="full-width">
+          <mat-label>Numéro  </mat-label>
+          <input matInput  formControlName="lstnumero" type="text"  required  />
+        </mat-form-field>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-label>Contenu </mat-label>
+          <textarea matInput formControlName="msg"  required ></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+
+
+
+    <mat-card-actions align="end">
+      <button mat-raised-button [routerLink]="['/listeadherents']">Retour</button>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="">
+        Ajouter
+      </button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+

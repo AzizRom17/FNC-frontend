@@ -1,12 +1,13 @@
 
-<h2 mat-dialog-title>Regler la cotisation</h2>
+<h2 mat-dialog-title>Désactiver Adhérent</h2>
 <mat-dialog-content >
 <p>Etes-vous sur de vouloir désactiver cet adhérent ?</p>
 
  </mat-dialog-content>
    <mat-dialog-actions align="end">
     <button class="mat-raised-button" (click)="close()">Annuler</button>
-    <button class="mat-raised-button mat-danger" (click)="save()">Confirmer</button>
+    <button mat-raised-button color="warn"
+     (click)="save()">Confirmer</button>
 </mat-dialog-actions>
 
 

@@ -1,5 +1,5 @@
 
-<h2 mat-dialog-title>Veuillez choisir un exercice</h2>
+<h2 mat-dialog-title>Soumettre à une assurance:</h2>
 <mat-dialog-content [formGroup]="exerciceForm" >
 
 
@@ -23,12 +23,9 @@
       </mat-form-field>
 
       <mat-form-field class="full-width" >
-        <mat-select placeholder="Année"  formControlName="compagnieLib">
+        <mat-select placeholder="Compagnie"  formControlName="compagnieLib">
           <mat-option *ngFor="let co of compagnie" [value]="co.compagnieLib"  >
             {{ co.compagnieLib }}
-
-
-
           </mat-option>
         </mat-select>
         </mat-form-field>
